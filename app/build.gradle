@@ -77,4 +77,11 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.2.1'
     annotationProcessor 'androidx.room:room-compiler:2.2.1'
     kapt "android.arch.persistence.room:compiler:1.1.1"
+
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.recyclerview:recyclerview-selection:1.0.0"
+    implementation "androidx.cardview:cardview:1.0.0"
+
+    implementation "com.google.android.material:material:1.2.0-alpha01"
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
