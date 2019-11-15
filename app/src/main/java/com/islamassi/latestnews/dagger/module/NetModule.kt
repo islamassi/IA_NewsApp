@@ -1,7 +1,11 @@
 package com.islamassi.latestnews.dagger.module
 
+import android.app.Application
 import com.google.gson.GsonBuilder
 import com.islamassi.latestnews.Constants.BASE_URL
+import com.islamassi.latestnews.MyApp
+import com.islamassi.latestnews.api.LiveDataCallAdapter
+import com.islamassi.latestnews.api.LiveDataCallAdapterFactory
 import com.islamassi.latestnews.api.Webservice
 
 import dagger.Module
@@ -9,6 +13,7 @@ import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -49,6 +54,7 @@ class NetModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
 
         return defaultRetrofitBuilder
             .client(okHttpClient)
@@ -70,6 +76,4 @@ class NetModule {
 
         return defaultHttpClient.build()
     }
-
-
 }
