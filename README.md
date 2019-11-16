@@ -34,13 +34,26 @@ Some SDKs used in the app:
 https://developer.android.com/jetpack/docs/guide#best-practices
 
 ![alt text](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
-a **UseCase layer** layer was added before the Repository layer.
+A **UseCase layer** layer was added before the Repository layer.
 
-I used a generic class NetworkBoundResource for loading a resource. This class can provide a resource backed by both the database and the network.
+
+I used a generic class NetworkBoundResource for loading a resource. 
+This class can provide a resource backed by both the database and the network.
+
 ![alt text](https://developer.android.com/topic/libraries/architecture/images/network-bound-resource.png)
 
 
 ## Screenshots
+![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/1.jpg)
+
+![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/3.jpg)
+
+![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/5.jpg)
+
+![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/7.jpg)
+
+![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/2.jpg)
+
 
 ### TO improve in future
 - A delay before sending a search request for around 300 ms
