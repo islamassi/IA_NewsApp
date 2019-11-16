@@ -40,6 +40,8 @@ I used a generic class NetworkBoundResource for loading a resource. This class c
 ![alt text](https://developer.android.com/topic/libraries/architecture/images/network-bound-resource.png)
 
 
+## Screenshots
+
 ### TO improve in future
 - A delay before sending a search request for around 300 ms
 - More test cases
