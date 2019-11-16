@@ -29,6 +29,9 @@ The user will be able to see the loaded articles offline.
 ### Time spent
 Around 10 commutative hours
 
+### APK 
+Please find the **LatestNews.apk** in the apk folder. Screenshots available below.
+
 ### Architecture 
  The app was built with a clean MVVM architecture following Android Architecture components and Android Jetpack.
  This is very important to make the code base more **robust**, **testable**, and **maintainable** in the long run.
@@ -61,9 +64,9 @@ This class can provide a resource backed by both the database and the network.
 </p>
 
 
-### TO improve in future
+### To improve in future
 - A delay before sending a search request for around 300 ms
 - More test cases
 
 ### Feedback
-YOur Feedback is highly appreciated.
+Your Feedback is highly appreciated.
