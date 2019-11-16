@@ -8,6 +8,12 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface Webservice {
-    @GET("/v2/top-headlines?country=gb")
-    fun getArticles(@Query("apiKey") apiKey: String): LiveData<ApiResponse<NewsArticlesResponse>>
+    @GET("/v2/top-headlines?country=us")
+    fun getArticles(
+        @Query("apiKey")
+        apiKey: String,
+
+        @Query("q")
+        keyWord: String?
+    ): LiveData<ApiResponse<NewsArticlesResponse>>
 }
