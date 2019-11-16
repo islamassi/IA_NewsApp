@@ -1,9 +1,9 @@
+# Latest News App
 
 <p align="center">
-  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/1.jpg?raw=true" width="250" >
+  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/1.jpg?raw=true" width="350" >
  </p>
  
-# Latest News App
 This app shows a list of news articles in US country from NewsApi. The following are the main app features:
 * A list of articles is displayed
 * A title, image, short description, and relative publish date is being displayed for every article.
