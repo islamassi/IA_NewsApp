@@ -44,15 +44,15 @@ This class can provide a resource backed by both the database and the network.
 
 
 ## Screenshots
-![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/1.jpg)
+![alt text](https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/1.jpg?raw=true)
 
-![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/3.jpg)
+![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/3.jpg?raw=true)
 
-![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/5.jpg)
+![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/5.jpg?raw=true)
 
-![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/7.jpg)
+![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/7.jpg?raw=true)
 
-![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/2.jpg)
+![alt text](https://github.com/islamassi/NewsApi/tree/greenelyTask/screenshots/2.jpg?raw=true)
 
 
 ### TO improve in future
