@@ -52,15 +52,15 @@ This class can provide a resource backed by both the database and the network.
 ## Screenshots
 
 <p align="center">
-  <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/1.jpg?raw=true" width="350" >
+  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/1.jpg?raw=true" width="500" >
  
-  <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/3.jpg?raw=true" width="350" >
+  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/3.jpg?raw=true" width="500" >
  
-  <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/5.jpg?raw=true" width="350" >
+  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/5.jpg?raw=true" width="500" >
  
-  <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/2.jpg?raw=true" width="350" >
+  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/2.jpg?raw=true" width="500" >
  
-  <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/7.jpg?raw=true" width="700" >
+  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/7.jpg?raw=true" width="750" >
 </p>
 
 
