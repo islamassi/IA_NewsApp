@@ -6,7 +6,6 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.islamassi.latestnews.AppExecutors
 import com.islamassi.latestnews.api.ApiResponse
 import com.islamassi.latestnews.api.Resource
 import io.reactivex.Observable
@@ -15,12 +14,9 @@ import io.reactivex.schedulers.Schedulers
 /**
  * A generic class that can provide a resource backed by both the database and the network.
  *
- *
- * You can read more about it in the [Architecture
- * Guide](https://developer.android.com/arch).
- * @param <ResultType>
- * @param <RequestType>
-</RequestType></ResultType> */
+ * @param ResultType class type for the expected body that will be used in the app
+ * @param RequestType class type of the body of the request
+*/
 abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constructor() {
     private val result = MediatorLiveData<Resource<ResultType>>()
 
@@ -28,6 +24,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constru
         val dbSource = loadFromDb()
         result.addSource(dbSource) { resultType ->
             result.removeSource(dbSource)
+            // check if we should fetch data from network or load locale data
             if (shouldFetch(resultType)) {
                 fetchFromNetwork(dbSource)
             } else {
@@ -50,6 +47,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constru
             result.removeSource(dbSource)
 
             if (response!!.isSuccessful) {
+                // save network success body to locale database
                 processResponse(response).let {
                     Observable.fromCallable { saveCallResult(it!!) }
                         .subscribeOn(Schedulers.io())
@@ -88,18 +86,33 @@ abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constru
 
     protected open fun onFetchFailed() {}
 
+    /**
+     * save network response to locale database
+     */
     @WorkerThread
     protected abstract fun saveCallResult(item: RequestType)
 
+    /**
+     * @return Weather to fetch this call from network or just from local database
+     */
     @MainThread
     protected abstract fun shouldFetch(data: ResultType?): Boolean
 
+    /**
+     * loading data from locale database
+     */
     @MainThread
     protected abstract fun loadFromDb(): LiveData<ResultType>
 
+    /**
+     * create a network call
+     */
     @MainThread
     protected abstract fun createCall(): LiveData<ApiResponse<RequestType>>
 
+    /**
+     * get the LiveData representation
+     */
     fun asLiveData(): LiveData<Resource<ResultType>> {
         return result
     }

@@ -9,6 +9,9 @@ import com.squareup.picasso.RequestCreator
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * extension method for loading and downloading an image and showing it to an ImageView
+ */
 fun ImageView.load(url: String) {
     Picasso.get()
         .load(url)
@@ -16,6 +19,9 @@ fun ImageView.load(url: String) {
         .into(this)
 }
 
+/**
+ * Setting text to TextView and changing it is visibility to Gone if empty
+ */
 fun TextView.setTextGoneOnEmpty(text: String?){
     if (!text.isNullOrEmpty()){
         this.text = text.trim()
@@ -26,6 +32,11 @@ fun TextView.setTextGoneOnEmpty(text: String?){
     }
 }
 
+/**
+ * converting a string to a date
+ *
+ * @param format date format
+ */
 fun String.toDate(format:String):Date?{
     val dateFormat = SimpleDateFormat(format, Locale.getDefault())
     return try {

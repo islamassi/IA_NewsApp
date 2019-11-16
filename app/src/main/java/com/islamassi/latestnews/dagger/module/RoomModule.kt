@@ -10,10 +10,15 @@ import com.islamassi.latestnews.MyApp
 import com.islamassi.latestnews.db.ArticleDao
 import com.islamassi.latestnews.db.NewsDatabase
 
-
+/**
+ * Dagger module for providing Room DB related objects
+ */
 @Module
 class RoomModule {
 
+    /**
+     * Provides DB object
+     */
     @Provides
     @Singleton
     internal fun provideNewsDatabase(context: Context): NewsDatabase{
@@ -23,12 +28,14 @@ class RoomModule {
         ).build()
     }
 
+    /**
+     * ProvidesArticleDao for DB transactions to Article table
+     */
     @Provides
     @Singleton
     internal fun provideArticleDao(database: NewsDatabase): ArticleDao{
         return database.articleDao()
     }
-
 
     @Provides
     @Singleton

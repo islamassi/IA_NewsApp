@@ -15,12 +15,20 @@ import java.util.*
 import androidx.browser.trusted.TrustedWebActivityIntentBuilder
 import com.islamassi.latestnews.*
 
-
+/**
+ * RecyclerView ViewHolder that hold the article view and bind
+ *
+ * @param binding data binding for the article layout
+ */
 class ArticleViewHolder(private val binding:ArticleViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
+    /**
+     * bind article data to article layout
+     * @param article article to be binded to the view
+     */
     fun onBind(article:Article){
         binding.article = article
-        binding.articleImage.load(article.urlToImage?:Constants.PLACEHOLDER_IMAGE)
+        binding.articleImage.load(article.urlToImage?:"")
         binding.title.setTextGoneOnEmpty(article.title)
         binding.description.setTextGoneOnEmpty(article.description)
         val date = article.publishedAt?.toDate("yyyy-MM-dd'T'HH:mm:ssX")

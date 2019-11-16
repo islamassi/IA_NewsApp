@@ -7,7 +7,16 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
+/**
+ * WebService interface contains Retrofit requests
+ */
 interface Webservice {
+
+    /**
+     * GET request for getting articles
+     * @param apiKey newsApi key
+     * @param keyWord search query
+     */
     @GET("/v2/top-headlines?country=us")
     fun getArticles(
         @Query("apiKey")

@@ -8,9 +8,19 @@ import com.islamassi.latestnews.ui.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 
+/**
+ * Dagger App component
+ */
 @Singleton
 @Component(modules = [ViewModelModule::class, NetModule::class, RoomModule::class])
 interface AppComponent {
+    /**
+     * injects properties for MainActivity
+     */
     fun inject(activity: MainActivity)
+
+    /**
+     * injects properties for ArticlesFragment
+     */
     fun inject(fragment: ArticlesFragment)
 }

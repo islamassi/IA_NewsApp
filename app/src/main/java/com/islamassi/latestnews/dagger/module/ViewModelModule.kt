@@ -8,12 +8,18 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 
+/**
+ * Dagger module for providing ViewModel objects
+ */
 @Module
 abstract class ViewModelModule {
 
     @Binds
     internal abstract fun bindViewModelFactory(viewModelFactory: ViewModelFactory):ViewModelProvider.Factory
 
+    /**
+     * Provide ArticlesViewModel
+     */
     @Binds
     @IntoMap
     @ViewModelKey(ArticlesViewModel::class)

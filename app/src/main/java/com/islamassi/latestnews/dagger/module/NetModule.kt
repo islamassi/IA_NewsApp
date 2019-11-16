@@ -7,6 +7,8 @@ import com.islamassi.latestnews.MyApp
 import com.islamassi.latestnews.api.LiveDataCallAdapter
 import com.islamassi.latestnews.api.LiveDataCallAdapterFactory
 import com.islamassi.latestnews.api.Webservice
+import com.islamassi.latestnews.usecase.ArticlesInteractor
+import com.islamassi.latestnews.usecase.ArticlesUseCase
 
 import dagger.Module
 import dagger.Provides
@@ -22,14 +24,17 @@ import java.util.concurrent.TimeUnit
 
 
 /**
- * Created by islam on 25,May,2019
- *
- * provide net related objects
+ *  Dagger Module for providing net related objects
  */
 
 @Module
 class NetModule {
 
+    /**
+     * provides a webservice object for calling API requests
+     *
+     * @param retrofitBuilder RetrofitBuilder for building the requests interface
+     */
     @Provides
     @Singleton
     internal fun provideWebService(retrofitBuilder: Retrofit.Builder): Webservice {
@@ -40,7 +45,9 @@ class NetModule {
 
     }
 
-
+    /**
+     * Provides RetrofitBuilder for building requests interfaces
+     */
     @Provides
     @Singleton
     internal fun provideRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit.Builder {
@@ -60,7 +67,9 @@ class NetModule {
             .client(okHttpClient)
     }
 
-
+    /**
+     * provide OkHttpObject
+     */
     @Provides
     @Singleton
     internal fun provideOkHttp(): OkHttpClient {
@@ -75,5 +84,14 @@ class NetModule {
         )
 
         return defaultHttpClient.build()
+    }
+
+    /**
+     * Provides ArticlesUseCase interface as ArticlesInteractor
+     */
+    @Provides
+    @Singleton
+    internal fun provideArticleUseCase(interactor: ArticlesInteractor):ArticlesUseCase{
+        return interactor
     }
 }

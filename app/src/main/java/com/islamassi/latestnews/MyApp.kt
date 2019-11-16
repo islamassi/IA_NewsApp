@@ -2,6 +2,9 @@ package com.islamassi.latestnews
 
 import android.app.Application
 
+/**
+ * Application class
+ */
 class MyApp: Application() {
 
     override fun onCreate() {

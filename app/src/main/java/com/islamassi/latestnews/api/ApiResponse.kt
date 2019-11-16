@@ -23,7 +23,10 @@ import java.io.IOException
 import java.util.regex.Pattern
 
 /**
- * Created by abhinav.sharma on 06/11/17.
+ * generic lass used for API responses
+ *
+ *@param T body type of the response
+ * This class is suggested by Android  Jetpack documentation
  */
 class ApiResponse<T> {
     val code: Int

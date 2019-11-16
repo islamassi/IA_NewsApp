@@ -7,6 +7,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.lang.reflect.Type
 
+/**
+ * Adapter for Retrofit to convert Call into LiveData.
+ * This will let us use LiveData as the return type of a retrofit request instead of Call
+ */
 class LiveDataCallAdapter<R>(private val responseType: Type): CallAdapter<R, LiveData<ApiResponse<R>>> {
     override fun adapt(call: Call<R>): LiveData<ApiResponse<R>> {
         return object : LiveData<ApiResponse<R>>() {
