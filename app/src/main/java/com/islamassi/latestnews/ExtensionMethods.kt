@@ -12,7 +12,9 @@ import java.util.*
 /**
  * extension method for loading and downloading an image and showing it to an ImageView
  */
-fun ImageView.load(url: String) {
+fun ImageView.load(url: String?) {
+    if(url.isNullOrEmpty())
+        return
     Picasso.get()
         .load(url)
         .error(R.drawable.placeholder)
