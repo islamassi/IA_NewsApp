@@ -15,7 +15,7 @@ The user will be able to see the loaded articles offline.
 * The app targets Android API 29 with minSDK 21
 
 
-Some SDKs used in the app:
+### SDKs used:
 - LiveData
 - ViewModel
 - Databinding
@@ -26,10 +26,13 @@ Some SDKs used in the app:
 - Picasso 
 - Mockito
 
+### Time spent
+Around 10 commutative hours
 
 ### Architecture 
  The app was built with a clean MVVM architecture following Android Architecture components and Android Jetpack.
- This is very important to make the code base more **robust**, **testable**, and **maintainable** in the long run. 
+ This is very important to make the code base more **robust**, **testable**, and **maintainable** in the long run.
+ Please have a look to the implementation.
 
 https://developer.android.com/jetpack/docs/guide#best-practices
 
@@ -61,3 +64,6 @@ This class can provide a resource backed by both the database and the network.
 ### TO improve in future
 - A delay before sending a search request for around 300 ms
 - More test cases
+
+### Feedback
+YOur Feedback is highly appreciated.
