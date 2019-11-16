@@ -47,10 +47,14 @@ This class can provide a resource backed by both the database and the network.
 
 <p align="center">
   <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/1.jpg?raw=true" width="350" >
+ 
   <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/3.jpg?raw=true" width="350" >
+ 
   <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/5.jpg?raw=true" width="350" >
+ 
   <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/2.jpg?raw=true" width="350" >
-   <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/7.jpg?raw=true" width="350" >
+ 
+  <img src="https://github.com/islamassi/NewsApi/blob/greenelyTask/screenshots/7.jpg?raw=true" width="700" >
 </p>
 
 
