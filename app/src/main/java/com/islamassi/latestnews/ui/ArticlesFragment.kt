@@ -1,17 +1,12 @@
 package com.islamassi.latestnews.ui
 
-import android.app.SearchManager
-import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.islamassi.latestnews.viewmodel.ArticlesViewModel
 import com.islamassi.latestnews.R
@@ -64,11 +59,11 @@ class ArticlesFragment : Fragment() {
         articlesObserver = Observer {
             if (it is Resource.Success ){
                 // articles resource successfully loaded from (database or network)
-                it.data?.let { list -> articlesAdapter.notifyChange(list) }
+                it.data?.let { list -> handleNewArticleList(list) }
                 binding.swipeToRefresh.isRefreshing = false
             }else if(it is Resource.Loading){
                 // articles resource is being loaded there is data from database to show for now until the request finishes
-                it.data?.let { list -> articlesAdapter.notifyChange(list) }
+                it.data?.let { list -> handleNewArticleList(list) }
             }else if (it is Resource.Error){
                 // articles resource failed to load
                 Snackbar.make(binding.root, getString(R.string.request_failed), Snackbar.LENGTH_LONG).show()
@@ -144,5 +139,15 @@ class ArticlesFragment : Fragment() {
         searchView.setQuery("", false);
         searchView.clearFocus();
         searchView.isIconified = true
+    }
+
+    private fun handleNewArticleList(list: List<Article>){
+        if(list.isNullOrEmpty()){
+            binding.emptyState.visibility = View.VISIBLE
+            articlesAdapter.notifyChange(emptyList())
+        }else{
+            binding.emptyState.visibility = View.GONE
+            articlesAdapter.notifyChange(list)
+        }
     }
 }
