@@ -18,9 +18,13 @@ The user will be able to see the loaded articles offline.
 * When the user rotate the screen, the user will see the same data at the same scroll position.
 * The app targets Android API 29 with minSDK 21 and using androidX
 
-### Top headlines API request (NewsApi):
-GET "https://newsapi.org/v2/top-headlines?country=us"
+### API info (NewsApi):
+GET "https://newsapi.org/v2/top-headlines"
+
 @Query apiKey "7019973f03494525b62199f2e92fe71f"
+
+@Query country "us"
+
 
 ### SDKs used:
 - LiveData
