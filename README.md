@@ -4,20 +4,23 @@
   <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/1.jpg?raw=true" width="350" >
  </p>
  
-This app shows a list of news articles in US country from NewsApi. The following are the main app features:
-* A list of articles is displayed
+This app shows a list of top headlines news from NewsApi. The following are the main app features:
+* Showing a list of news articles
 * A title, image, short description, and relative publish date is being displayed for every article.
 * The user have the ability to **search** for a specific article using the search view.
-* **Room local database** was used to save the loaded articles so they will be available offline.
+* **Room database** was used to save the loaded articles locally so they will be available offline.
 * When a user clicks on an article, article URL will be opened showing all article details in an in-app tab.
-This will let the user befit from the browser experience including showing videos. 
+This will let the user benefit from the browser features and experience including showing videos and rich details.
 In the other hand, the user is still inside the app.
-* Local articles saved in the DB will be loaded when the user opens the app. a server request will be also initiated in the same time.
+* Local articles saved in the database will be loaded when the user opens the app. a server request will be also initiated in the same time.
 The user will be able to see the loaded articles offline.
-* The DB is the single source of truth
+* The database is the single source of truth
 * When the user rotate the screen, the user will see the same data at the same scroll position.
-* The app targets Android API 29 with minSDK 21
+* The app targets Android API 29 with minSDK 21 and using androidX
 
+### Top headlines API request (NewsApi):
+GET "https://newsapi.org/v2/top-headlines?country=us"
+@Query apiKey "7019973f03494525b62199f2e92fe71f"
 
 ### SDKs used:
 - LiveData
@@ -39,7 +42,8 @@ Please find the **LatestNews.apk** in the apk folder. Screenshots available belo
 ### Architecture 
  The app was built with a clean MVVM architecture following Android Architecture components and Android Jetpack.
  This is very important to make the code base more **robust**, **testable**, and **maintainable** in the long run.
- Please have a look to the implementation.
+ 
+ **Please have a look to the implementation.**
 
 https://developer.android.com/jetpack/docs/guide#best-practices
 
