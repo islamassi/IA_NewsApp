@@ -4,6 +4,9 @@ import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.annotation.IdRes
+import androidx.constraintlayout.widget.Placeholder
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 import java.text.SimpleDateFormat
@@ -12,13 +15,17 @@ import java.util.*
 /**
  * extension method for loading and downloading an image and showing it to an ImageView
  */
-fun ImageView.load(url: String?) {
+fun ImageView.load(url: String?, @DrawableRes placeholder: Int) {
+
     if(url.isNullOrEmpty())
-        return
-    Picasso.get()
-        .load(url)
-        .error(R.drawable.placeholder)
-        .into(this)
+        Picasso.get()
+            .load(placeholder)
+            .into(this)
+    else
+        Picasso.get()
+            .load(url)
+            .error(placeholder)
+            .into(this)
 }
 
 /**

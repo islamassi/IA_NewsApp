@@ -7,6 +7,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.room.util.StringUtil
 import com.google.android.material.snackbar.Snackbar
 import com.islamassi.latestnews.viewmodel.ArticlesViewModel
 import com.islamassi.latestnews.R
@@ -119,7 +120,10 @@ class ArticlesFragment : Fragment() {
      */
     private fun search(query:String?){
         query?.trim().let {
+            if (it.isNullOrEmpty())
+                return
             binding.swipeToRefresh.isRefreshing = true
+            removeObserver()
             viewModel.search(it)?.observe(this@ArticlesFragment, articlesObserver)
         }
     }
@@ -129,6 +133,7 @@ class ArticlesFragment : Fragment() {
      */
     private fun refresh(){
         binding.swipeToRefresh.isRefreshing = true
+        removeObserver()
         viewModel.loadNewsArticles().observe(this, articlesObserver)
     }
 
@@ -139,6 +144,10 @@ class ArticlesFragment : Fragment() {
         searchView.setQuery("", false);
         searchView.clearFocus();
         searchView.isIconified = true
+    }
+
+    private fun removeObserver(){
+        viewModel.articlesLiveData.removeObserver(articlesObserver)
     }
 
     private fun handleNewArticleList(list: List<Article>){
