@@ -28,7 +28,7 @@ class ArticleViewHolder(private val binding:ArticleViewBinding) : RecyclerView.V
      */
     fun onBind(article:Article){
         binding.article = article
-        binding.articleImage.load(article.urlToImage)
+        binding.articleImage.load(article.urlToImage, R.drawable.placeholder)
         binding.title.setTextGoneOnEmpty(article.title)
         binding.description.setTextGoneOnEmpty(article.description)
         val date = article.publishedAt?.toDate("yyyy-MM-dd'T'HH:mm:ssX")
