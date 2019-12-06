@@ -17,8 +17,6 @@ fun ImageView.load(url: String?, @DrawableRes placeholder: Int) {
     if(url.isNullOrEmpty())
         Picasso.get()
             .load(placeholder)
-            .fit()
-            .centerCrop()
             .into(this)
     else
         Picasso.get()
