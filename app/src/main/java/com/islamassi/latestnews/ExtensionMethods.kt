@@ -5,10 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import androidx.annotation.IdRes
-import androidx.constraintlayout.widget.Placeholder
 import com.squareup.picasso.Picasso
-import com.squareup.picasso.RequestCreator
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +22,8 @@ fun ImageView.load(url: String?, @DrawableRes placeholder: Int) {
         Picasso.get()
             .load(url)
             .error(placeholder)
+            .fit()
+            .centerCrop()
             .into(this)
 }
 
