@@ -21,7 +21,7 @@ The user will be able to see the loaded articles offline.
 ### API info (NewsApi):
 GET "https://newsapi.org/v2/top-headlines"
 
-@Query apiKey "7019973f03494525b62199f2e92fe71f"
+@Query apiKey "ADD_YOUR_API_KEY"
 
 @Query country "us"
 
@@ -37,8 +37,6 @@ GET "https://newsapi.org/v2/top-headlines"
 - Picasso 
 - Mockito
 
-### Time spent
-Around 10 commutative hours
 
 ### APK 
 Please find the **LatestNews.apk** in the apk folder. Screenshots available below.
@@ -46,8 +44,6 @@ Please find the **LatestNews.apk** in the apk folder. Screenshots available belo
 ### Architecture 
  The app was built with a clean MVVM architecture following Android Architecture components and Android Jetpack.
  This is very important to make the code base more **robust**, **testable**, and **maintainable** in the long run.
- 
- **Please have a look to the implementation.**
 
 https://developer.android.com/jetpack/docs/guide#best-practices
 
@@ -60,6 +56,9 @@ This class can provide a resource backed by both the database and the network.
 
 ![alt text](https://developer.android.com/topic/libraries/architecture/images/network-bound-resource.png)
 
+
+### Build/Run the app:
+For successfully running the app, you need to add an API key for the NewsAPi on the Constants.kt file.
 
 ## Screenshots
 
