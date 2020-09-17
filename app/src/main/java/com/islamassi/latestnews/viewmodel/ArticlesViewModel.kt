@@ -21,6 +21,7 @@ class ArticlesViewModel @Inject constructor(
 ) : ViewModel() {
 
     var articlesLiveData: LiveData<Resource<List<Article>>> = MutableLiveData()
+    var selectedArticle: MutableLiveData<Article?> = MutableLiveData()
 
     /**
      * load new news articles

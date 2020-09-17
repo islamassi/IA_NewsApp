@@ -13,6 +13,7 @@ import com.islamassi.latestnews.model.Article
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.browser.trusted.TrustedWebActivityIntentBuilder
+import androidx.core.view.ViewCompat
 import com.islamassi.latestnews.*
 
 /**
@@ -20,13 +21,17 @@ import com.islamassi.latestnews.*
  *
  * @param binding data binding for the article layout
  */
-class ArticleViewHolder(private val binding:ArticleViewBinding) : RecyclerView.ViewHolder(binding.root) {
+class ArticleViewHolder( val binding:ArticleViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
+    init {
+
+    }
     /**
      * bind article data to article layout
      * @param article article to be binded to the view
      */
     fun onBind(article:Article){
+        ViewCompat.setTransitionName(binding.articleImage, article.title)
         binding.article = article
         binding.articleImage.load(article.urlToImage, R.drawable.placeholder)
         binding.title.setTextGoneOnEmpty(article.title)
@@ -40,26 +45,5 @@ class ArticleViewHolder(private val binding:ArticleViewBinding) : RecyclerView.V
                     DateUtils.MINUTE_IN_MILLIS
                 );
         }
-
-        article.url?.let { url: String ->
-            binding.root.setOnClickListener {
-                launchWithCustomColors(it, url)
-            }
-        }
     }
-
-    /**
-     * Launches a Trusted Web Activity where navigations to non-validate domains will open
-     * in a Custom Tab where the toolbar color has been customized.
-     *
-     * @param view the source of the event invoking this method.
-     */
-    fun launchWithCustomColors(view: View, url:String) {
-        if (url.isEmpty())
-            return
-        val builder = TrustedWebActivityIntentBuilder(Uri.parse(url))
-            .setToolbarColor(view.resources.getColor(R.color.colorPrimary))
-        TwaLauncher(view.context).launch(builder, null, null)
-    }
-
 }
