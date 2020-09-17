@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.format.DateUtils
 import android.transition.TransitionInflater
 import android.view.*
+import android.view.animation.BounceInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.trusted.TrustedWebActivityIntentBuilder
 import androidx.fragment.app.Fragment
@@ -54,6 +55,8 @@ class ArticleDetailsFragment : Fragment() {
         viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(ArticlesViewModel::class.java)
         binding.lifecycleOwner = this
         bindData()
+        bounceFabButton()
+        animateText()
         return binding.root
     }
 
@@ -100,6 +103,7 @@ class ArticleDetailsFragment : Fragment() {
         binding.appBar.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
             override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
                 //  Vertical offset == 0 indicates appBar is fully  expanded.
+
                 if (Math.abs(verticalOffset) > 200) {
                     appBarExpanded = false
                     requireActivity().invalidateOptionsMenu()
@@ -116,6 +120,14 @@ class ArticleDetailsFragment : Fragment() {
         }
     }
 
+    private fun animateText() {
+        var titleAnim = binding.title
+    }
+
+    private fun bounceFabButton() {
+        binding.fab.translationY = -400f
+        binding.fab.animate().setInterpolator(BounceInterpolator()).translationYBy(400f).setDuration(1400)
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
