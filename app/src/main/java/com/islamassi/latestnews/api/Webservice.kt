@@ -17,7 +17,7 @@ interface Webservice {
      * @param apiKey newsApi key
      * @param keyWord search query
      */
-    @GET("/v2/top-headlines?country=AT")
+    @GET("/v2/top-headlines?country=us")
     fun getArticles(
         @Query("apiKey")
         apiKey: String,

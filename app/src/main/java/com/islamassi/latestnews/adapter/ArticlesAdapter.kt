@@ -2,13 +2,14 @@ package com.islamassi.latestnews.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.util.StringUtil
 import com.islamassi.latestnews.ArticleListener
 import com.islamassi.latestnews.databinding.ArticleViewBinding
 import com.islamassi.latestnews.model.Article
+import com.islamassi.latestnews.util.MyDiffCallback
 import com.islamassi.latestnews.viewholder.ArticleViewHolder
+
 
 /**
  * Adapter that binds Article items into a recyclerView list
@@ -41,8 +42,13 @@ class ArticlesAdapter constructor(
      */
     fun notifyChange(newArticles: List<Article>){
         shouldAnimate = false
+        /*articles.clear()
+        articles.addAll(newArticles)
+        notifyDataSetChanged()*/
+
+        val diffResult = DiffUtil.calculateDiff(MyDiffCallback(newArticles, this.articles))
         articles.clear()
         articles.addAll(newArticles)
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 }
