@@ -3,6 +3,7 @@ package com.islamassi.latestnews.ui
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
@@ -49,6 +50,7 @@ class ArticlesFragment : Fragment(), ArticleListener {
         DaggerAppComponent.create().inject(this) // inject
         binding = DataBindingUtil.inflate(inflater, R.layout.articles_fragment, container, false)
         binding.lifecycleOwner = this
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         setHasOptionsMenu(true)
 
         // get ViewModel object
@@ -56,6 +58,17 @@ class ArticlesFragment : Fragment(), ArticleListener {
         articlesAdapter = ArticlesAdapter(mutableListOf(), this)
         binding.articlesRecyclerView.adapter = articlesAdapter
 
+        binding.articlesRecyclerView.setOnScrollChangeListener(object : View.OnScrollChangeListener{
+            override fun onScrollChange(
+                v: View?,
+                scrollX: Int,
+                scrollY: Int,
+                oldScrollX: Int,
+                oldScrollY: Int
+            ) {
+                articlesAdapter.shouldAnimate = true
+            }
+        })
         articlesObserver = Observer {
             if (it is Resource.Success ){
                 // articles resource successfully loaded from (database or network)

@@ -20,6 +20,7 @@ class ArticlesAdapter constructor(
     private val articles : MutableList<Article>,
     private val listener:ArticleListener):
     RecyclerView.Adapter<ArticleViewHolder>() {
+    var shouldAnimate = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder =
         ArticleViewHolder(ArticleViewBinding.inflate(LayoutInflater.from(parent.context),parent, false ))
@@ -31,7 +32,7 @@ class ArticlesAdapter constructor(
             holder.itemView.setOnClickListener {
                 listener.articleClicked(this, holder.binding.articleImage)
             }
-            holder.onBind(this)
+            holder.onBind(this, shouldAnimate)
         }
     }
 
@@ -39,6 +40,7 @@ class ArticlesAdapter constructor(
      * Handling new articles list and binding the items
      */
     fun notifyChange(newArticles: List<Article>){
+        shouldAnimate = false
         articles.clear()
         articles.addAll(newArticles)
         notifyDataSetChanged()

@@ -22,6 +22,7 @@ import com.islamassi.latestnews.toDate
 import com.islamassi.latestnews.viewmodel.ArticlesViewModel
 import com.islamassi.latestnews.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_article_details.*
+import kotlinx.android.synthetic.main.layout_details.view.*
 import java.util.*
 import javax.inject.Inject
 
@@ -89,10 +90,10 @@ class ArticleDetailsFragment : Fragment() {
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         viewModel.selectedArticle.value?.apply {
             binding.article = this
-            binding.title.setTextGoneOnEmpty(this.title)
-            binding.description.setTextGoneOnEmpty(this.description)
+            binding.detailsContainer.title.setTextGoneOnEmpty(this.title)
+            binding.detailsContainer.description.setTextGoneOnEmpty(this.description)
             val date = this.publishedAt?.toDate("yyyy-MM-dd'T'HH:mm:ssX")
-            binding.publishDate.text =
+            binding.detailsContainer.publish_date.text =
                 DateUtils.getRelativeTimeSpanString(
                     date!!.time,
                     Date().time,
@@ -121,7 +122,7 @@ class ArticleDetailsFragment : Fragment() {
     }
 
     private fun animateText() {
-        var titleAnim = binding.title
+        var titleAnim = binding.detailsContainer.title
     }
 
     private fun bounceFabButton() {

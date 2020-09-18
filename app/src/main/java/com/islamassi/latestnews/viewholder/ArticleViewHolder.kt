@@ -32,12 +32,13 @@ class ArticleViewHolder( val binding:ArticleViewBinding) : RecyclerView.ViewHold
      * bind article data to article layout
      * @param article article to be binded to the view
      */
-    fun onBind(article:Article){
+    fun onBind(article:Article, shouldAnimate:Boolean){
         animatorSet?.end()
         ViewCompat.setTransitionName(binding.articleImage, article.title)
         binding.article = article
         binding.articleImage.load(article.urlToImage, R.drawable.placeholder)
-        animateCard()
+        if (shouldAnimate)
+            animateCard()
         binding.title.setTextGoneOnEmpty(article.title)
         binding.description.setTextGoneOnEmpty(article.description)
         val date = article.publishedAt?.toDate("yyyy-MM-dd'T'HH:mm:ssX")
