@@ -4,7 +4,7 @@ import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
 import com.islamassi.latestnews.model.Article
 
-class MyDiffCallback(
+class ArticlesDiffCallback(
     var newArticles: List<Article>,
     var oldArticles: List<Article>
 ) : DiffUtil.Callback() {

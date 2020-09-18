@@ -1,15 +1,20 @@
 package com.islamassi.latestnews.ui
 
+import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.transition.TransitionInflater
+import android.util.Log
 import android.view.*
+import android.view.View.OnTouchListener
 import android.view.animation.BounceInterpolator
-import android.widget.Toast
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.trusted.TrustedWebActivityIntentBuilder
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.appbar.AppBarLayout
@@ -18,15 +23,16 @@ import com.islamassi.latestnews.R
 import com.islamassi.latestnews.dagger.component.DaggerAppComponent
 import com.islamassi.latestnews.databinding.FragmentArticleDetailsBinding
 import com.islamassi.latestnews.load
-import com.islamassi.latestnews.model.Article
 import com.islamassi.latestnews.setTextGoneOnEmpty
 import com.islamassi.latestnews.toDate
+import com.islamassi.latestnews.ui.custom.LiveNewsPopup
+import com.islamassi.latestnews.ui.custom.ReadOptionsPopup
 import com.islamassi.latestnews.viewmodel.ArticlesViewModel
 import com.islamassi.latestnews.viewmodel.ViewModelFactory
-import kotlinx.android.synthetic.main.fragment_article_details.*
 import kotlinx.android.synthetic.main.layout_details.view.*
 import java.util.*
 import javax.inject.Inject
+
 
 /**
  * A simple [Fragment] subclass.
@@ -40,6 +46,14 @@ class ArticleDetailsFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private lateinit var viewModel: ArticlesViewModel
+    private lateinit var readOptionsPopup: ReadOptionsPopup
+    private lateinit var livePopup: LiveNewsPopup
+
+    companion object {
+        @JvmStatic
+        fun newInstance() =
+            ArticleDetailsFragment()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -80,16 +94,13 @@ class ArticleDetailsFragment : Fragment() {
                     return@setOnMenuItemClickListener true
                 }.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
         }
-
         return super.onPrepareOptionsMenu(collapsedMenu);
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.read_options -> {
-                AlertDialog.Builder(requireContext()).apply {
-                    setView(R.layout.layout_read_options)
-                }.show()
+                readOptionsPopup.show(binding.root)
                 return true
             }
         }
@@ -109,6 +120,11 @@ class ArticleDetailsFragment : Fragment() {
                     Date().time,
                     DateUtils.MINUTE_IN_MILLIS
                 )
+            binding.articleImage.transitionName = this.title
+            binding.articleImage.load(this.urlToImage, R.drawable.placeholder)
+            url?.apply {
+                binding.fab.setOnClickListener { launchWithCustomColors(this) }
+            }
         }
 
         binding.appBar.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
@@ -123,10 +139,19 @@ class ArticleDetailsFragment : Fragment() {
                 }
             }
         })
-        viewModel.selectedArticle.value?.apply {
-            binding.articleImage.transitionName = this.title
-            binding.articleImage.load(this.urlToImage, R.drawable.placeholder)
-        }
+
+        readOptionsPopup = ReadOptionsPopup.newInstance(layoutInflater)
+        livePopup = LiveNewsPopup.newInstance(layoutInflater)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        livePopup.dismiss()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        livePopup.show(viewModel.selectedArticle.value?.title,0,resources.getDimension(R.dimen.live_offset).toInt(), binding.root)
     }
 
     private fun animateText() {
@@ -137,11 +162,6 @@ class ArticleDetailsFragment : Fragment() {
         binding.fab.translationY = -400f
         binding.fab.animate().setInterpolator(BounceInterpolator()).translationYBy(400f).setDuration(1400)
     }
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            ArticleDetailsFragment()
-    }
 
     /**
      * Launches a Trusted Web Activity where navigations to non-validate domains will open
@@ -149,7 +169,7 @@ class ArticleDetailsFragment : Fragment() {
      *
      * @param view the source of the event invoking this method.
      */
-    fun launchWithCustomColors(url:String) {
+    private fun launchWithCustomColors(url:String) {
         if (url.isEmpty())
             return
         val builder = TrustedWebActivityIntentBuilder(Uri.parse(url))

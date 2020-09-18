@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.islamassi.latestnews.ArticleListener
 import com.islamassi.latestnews.databinding.ArticleViewBinding
 import com.islamassi.latestnews.model.Article
-import com.islamassi.latestnews.util.MyDiffCallback
+import com.islamassi.latestnews.util.ArticlesDiffCallback
 import com.islamassi.latestnews.viewholder.ArticleViewHolder
 
 
@@ -42,7 +42,7 @@ class ArticlesAdapter constructor(
      */
     fun notifyChange(newArticles: List<Article>){
         shouldAnimate = false
-        val diffResult = DiffUtil.calculateDiff(MyDiffCallback(newArticles, this.articles))
+        val diffResult = DiffUtil.calculateDiff(ArticlesDiffCallback(newArticles, this.articles))
         articles.clear()
         articles.addAll(newArticles)
         diffResult.dispatchUpdatesTo(this)
