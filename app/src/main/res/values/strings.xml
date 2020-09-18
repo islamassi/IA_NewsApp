@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Latest News</string>
     <string name="search">Search</string>
+    <string name="read_options">Read Options</string>
     <string name="refresh">refresh</string>
     <string name="request_failed">Server request failed!</string>
     <string name="no_results">Opps, no articles to show.</string>

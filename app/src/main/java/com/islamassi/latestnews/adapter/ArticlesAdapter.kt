@@ -42,10 +42,6 @@ class ArticlesAdapter constructor(
      */
     fun notifyChange(newArticles: List<Article>){
         shouldAnimate = false
-        /*articles.clear()
-        articles.addAll(newArticles)
-        notifyDataSetChanged()*/
-
         val diffResult = DiffUtil.calculateDiff(MyDiffCallback(newArticles, this.articles))
         articles.clear()
         articles.addAll(newArticles)

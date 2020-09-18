@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_margin">9dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+
+    <dimen name="date_tx">166dp</dimen>
+    <dimen name="image_ty">50dp</dimen>
+    <dimen name="card_tx">70dp</dimen>
+    <dimen name="title_tx">166dp</dimen>
+    <dimen name="card_margin_start">133dp</dimen>
+
+</resources>

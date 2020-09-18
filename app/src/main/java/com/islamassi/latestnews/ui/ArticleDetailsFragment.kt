@@ -6,6 +6,8 @@ import android.text.format.DateUtils
 import android.transition.TransitionInflater
 import android.view.*
 import android.view.animation.BounceInterpolator
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.trusted.TrustedWebActivityIntentBuilder
 import androidx.fragment.app.Fragment
@@ -83,6 +85,14 @@ class ArticleDetailsFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.read_options -> {
+                AlertDialog.Builder(requireContext()).apply {
+                    setView(R.layout.layout_read_options)
+                }.show()
+                return true
+            }
+        }
         return super.onOptionsItemSelected(item)
     }
 
@@ -104,7 +114,6 @@ class ArticleDetailsFragment : Fragment() {
         binding.appBar.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
             override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
                 //  Vertical offset == 0 indicates appBar is fully  expanded.
-
                 if (Math.abs(verticalOffset) > 200) {
                     appBarExpanded = false
                     requireActivity().invalidateOptionsMenu()
@@ -113,7 +122,6 @@ class ArticleDetailsFragment : Fragment() {
                     requireActivity().invalidateOptionsMenu()
                 }
             }
-
         })
         viewModel.selectedArticle.value?.apply {
             binding.articleImage.transitionName = this.title
@@ -130,13 +138,6 @@ class ArticleDetailsFragment : Fragment() {
         binding.fab.animate().setInterpolator(BounceInterpolator()).translationYBy(400f).setDuration(1400)
     }
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @return A new instance of fragment ArticleDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() =
             ArticleDetailsFragment()
