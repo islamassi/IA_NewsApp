@@ -174,7 +174,7 @@ class ArticlesFragment : Fragment(), ArticleListener {
         }
     }
 
-    override fun articleClicked(article: Article, image: ImageView) {
+    override fun articleClicked(article: Article, image: ImageView, title:View, descrip: View, dateView:View) {
         viewModel.selectedArticle.value = article
         val detailsFragment
                 = ArticleDetailsFragment.newInstance()
@@ -182,6 +182,9 @@ class ArticlesFragment : Fragment(), ArticleListener {
         fragmentManager
             ?.beginTransaction()
             ?.addSharedElement(image, image.transitionName)
+            ?.addSharedElement(title, title.transitionName)
+            ?.addSharedElement(descrip, descrip.transitionName)
+            ?.addSharedElement(dateView, dateView.transitionName)
             ?.addToBackStack(null)
             ?.replace(R.id.container, detailsFragment, ArticleDetailsFragment::javaClass.name)
             ?.commit()

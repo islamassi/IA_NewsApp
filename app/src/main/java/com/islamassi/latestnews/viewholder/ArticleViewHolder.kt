@@ -30,6 +30,7 @@ import com.islamassi.latestnews.*
  */
 class ArticleViewHolder( val binding:ArticleViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
+    private lateinit var article:Article
     private var animatorSet:AnimatorSet? = null
     private val animDuration = 1000L
     /**
@@ -37,8 +38,10 @@ class ArticleViewHolder( val binding:ArticleViewBinding) : RecyclerView.ViewHold
      * @param article article to be binded to the view
      */
     fun onBind(article:Article, shouldAnimate:Boolean){
+        this.article = article
         animatorSet?.end()
-        ViewCompat.setTransitionName(binding.articleImage, article.title)
+        initTransitions()
+
         binding.article = article
         binding.articleImage.load(article.urlToImage, R.drawable.placeholder)
         if (shouldAnimate)
@@ -54,6 +57,13 @@ class ArticleViewHolder( val binding:ArticleViewBinding) : RecyclerView.ViewHold
                     DateUtils.MINUTE_IN_MILLIS
                 )
         }
+    }
+
+    private fun initTransitions() {
+        ViewCompat.setTransitionName(binding.articleImage, article.getImageTransition())
+        ViewCompat.setTransitionName(binding.title, article.getTitleTransition())
+        ViewCompat.setTransitionName(binding.description, article.getDescTransition())
+        ViewCompat.setTransitionName(binding.publishDate, article.getDateTransition())
     }
 
 

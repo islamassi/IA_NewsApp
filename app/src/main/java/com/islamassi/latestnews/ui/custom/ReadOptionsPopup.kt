@@ -30,7 +30,7 @@ class ReadOptionsPopup(contentView: View?, width: Int, height: Int, focusable: B
             override fun onTouch(view: View?, motionEvent: MotionEvent): Boolean {
                 when (motionEvent.action) {
                     MotionEvent.ACTION_DOWN -> {
-                        downY = motionEvent.rawX
+                        downY = motionEvent.rawY
                     }
                     MotionEvent.ACTION_MOVE -> {
                         if (downY - motionEvent.rawY.toInt() > 200) {

@@ -1,5 +1,6 @@
 package com.islamassi.latestnews.ui
 
+import android.animation.ObjectAnimator
 import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.net.Uri
 import android.os.Bundle
@@ -19,17 +20,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.appbar.AppBarLayout
 import com.google.androidbrowserhelper.trusted.TwaLauncher
-import com.islamassi.latestnews.R
+import com.islamassi.latestnews.*
+import com.islamassi.latestnews.Constants.DESCRIPTION_PREFIX_TRANS
+import com.islamassi.latestnews.Constants.TITLE_PREFIX_TRANS
 import com.islamassi.latestnews.dagger.component.DaggerAppComponent
 import com.islamassi.latestnews.databinding.FragmentArticleDetailsBinding
-import com.islamassi.latestnews.load
-import com.islamassi.latestnews.setTextGoneOnEmpty
-import com.islamassi.latestnews.toDate
+import com.islamassi.latestnews.model.Article
 import com.islamassi.latestnews.ui.custom.LiveNewsPopup
 import com.islamassi.latestnews.ui.custom.ReadOptionsPopup
 import com.islamassi.latestnews.viewmodel.ArticlesViewModel
 import com.islamassi.latestnews.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.layout_details.view.*
+import kotlinx.android.synthetic.main.layout_live_news.*
+import kotlinx.coroutines.delay
 import java.util.*
 import javax.inject.Inject
 
@@ -102,6 +105,10 @@ class ArticleDetailsFragment : Fragment() {
                 readOptionsPopup.show(binding.root)
                 return true
             }
+            R.id.live -> {
+                showLivePopup()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -112,21 +119,39 @@ class ArticleDetailsFragment : Fragment() {
             binding.article = this
             binding.detailsContainer.title.setTextGoneOnEmpty(this.title)
             binding.detailsContainer.description.setTextGoneOnEmpty(this.description)
-            val date = this.publishedAt?.toDate("yyyy-MM-dd'T'HH:mm:ssX")
-            binding.detailsContainer.publish_date.text =
-                DateUtils.getRelativeTimeSpanString(
-                    date!!.time,
-                    Date().time,
-                    DateUtils.MINUTE_IN_MILLIS
-                )
-            binding.articleImage.transitionName = this.title
+
+            initTransition(this)
+            animateDescription()
+            initDate(publishedAt)
             binding.articleImage.load(this.urlToImage, R.drawable.placeholder)
             url?.apply {
                 binding.fab.setOnClickListener { launchWithCustomColors(this) }
             }
             binding.toolbarLayout.title = this.author
         }
+        initAppBar()
+        readOptionsPopup = ReadOptionsPopup.newInstance(layoutInflater)
+        livePopup = LiveNewsPopup.newInstance(layoutInflater)
+    }
 
+    private fun initTransition(article:Article) {
+        binding.articleImage.transitionName = article.getImageTransition()
+        binding.detailsContainer.title.transitionName = article.getTitleTransition()
+        binding.detailsContainer.description.transitionName = article.getDescTransition()
+        binding.detailsContainer.publish_date.transitionName = article.getDateTransition()
+    }
+
+    private fun animateDescription() {
+        ObjectAnimator.ofFloat(binding.detailsContainer.more_descrip,
+            "alpha",
+            0f, 1f).apply {
+            startDelay = 500
+            duration = 300
+            start()
+        }
+    }
+
+    private fun initAppBar() {
         binding.appBar.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
             override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
                 //  Vertical offset == 0 indicates appBar is fully  expanded.
@@ -139,9 +164,16 @@ class ArticleDetailsFragment : Fragment() {
                 }
             }
         })
+    }
 
-        readOptionsPopup = ReadOptionsPopup.newInstance(layoutInflater)
-        livePopup = LiveNewsPopup.newInstance(layoutInflater)
+    private fun initDate(publishedAt:String?) {
+        val date = publishedAt?.toDate("yyyy-MM-dd'T'HH:mm:ssX")
+        binding.detailsContainer.publish_date.text =
+            DateUtils.getRelativeTimeSpanString(
+                date!!.time,
+                Date().time,
+                DateUtils.MINUTE_IN_MILLIS
+            )
     }
 
     override fun onPause() {
@@ -149,14 +181,14 @@ class ArticleDetailsFragment : Fragment() {
         livePopup.dismiss()
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun showLivePopup(){
         livePopup.show(viewModel.selectedArticle.value?.title,0,resources.getDimension(R.dimen.live_offset).toInt(), binding.root)
     }
 
     private fun bounceFabButton() {
-        binding.fab.translationY = -400f
-        binding.fab.animate().setInterpolator(BounceInterpolator()).translationYBy(400f).setDuration(1400)
+        val ty = resources.getDimension(R.dimen.fab_ty)
+        binding.fab.translationY = -ty
+        binding.fab.animate().setInterpolator(BounceInterpolator()).translationYBy(ty).setDuration(1400)
     }
 
     /**

@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
             android:id="@+id/live"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +24,7 @@
             android:padding="10dp"
             android:textColor="#ffffff"
             android:text="Live"
+            android:textSize="@dimen/live_txt_size"
             android:background="@drawable/bg_left_rounded"
             android:backgroundTintMode="src_over"
             android:backgroundTint="#EBFF5722"/>

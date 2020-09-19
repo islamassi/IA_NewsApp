@@ -31,7 +31,13 @@ class ArticlesAdapter constructor(
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         articles[position].apply {
             holder.itemView.setOnClickListener {
-                listener.articleClicked(this, holder.binding.articleImage)
+                listener.articleClicked(
+                    this,
+                    holder.binding.articleImage,
+                    holder.binding.title,
+                    holder.binding.description,
+                    holder.binding.publishDate
+                )
             }
             holder.onBind(this, shouldAnimate)
         }
