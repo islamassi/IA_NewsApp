@@ -73,7 +73,6 @@ class ArticleDetailsFragment : Fragment() {
         binding.lifecycleOwner = this
         bindData()
         bounceFabButton()
-        animateText()
         return binding.root
     }
 
@@ -125,6 +124,7 @@ class ArticleDetailsFragment : Fragment() {
             url?.apply {
                 binding.fab.setOnClickListener { launchWithCustomColors(this) }
             }
+            binding.toolbarLayout.title = this.author
         }
 
         binding.appBar.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
@@ -152,10 +152,6 @@ class ArticleDetailsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         livePopup.show(viewModel.selectedArticle.value?.title,0,resources.getDimension(R.dimen.live_offset).toInt(), binding.root)
-    }
-
-    private fun animateText() {
-        var titleAnim = binding.detailsContainer.title
     }
 
     private fun bounceFabButton() {

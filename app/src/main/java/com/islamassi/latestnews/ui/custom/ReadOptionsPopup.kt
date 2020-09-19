@@ -1,22 +1,27 @@
 package com.islamassi.latestnews.ui.custom
 
+import android.os.Handler
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.PopupWindow
+import androidx.constraintlayout.motion.widget.MotionLayout
 import com.islamassi.latestnews.R
 
 class ReadOptionsPopup(contentView: View?, width: Int, height: Int, focusable: Boolean) :
     PopupWindow(contentView, width, height, focusable) {
+    private lateinit var motionLayout:MotionLayout
     init {
         animationStyle = R.style.SlidingDialogAnimation
         contentView?.setOnTouchListener(getTouchListener())
+        motionLayout = contentView?.findViewById(R.id.containerMotionLayout)!!
     }
 
     fun show(viewToAttach: View){
         showAtLocation(viewToAttach, Gravity.TOP, 0, 0)
+        motionLayout.postDelayed({ motionLayout.transitionToEnd() },200)
     }
 
     private fun getTouchListener():View.OnTouchListener=

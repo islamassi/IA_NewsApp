@@ -10,6 +10,6 @@
             android:orderInCategory="1"
             android:title="@string/read_options"
             app:showAsAction="always"
-            android:icon="@drawable/ic_refresh"
+            android:icon="@drawable/ic_eye"
             android:theme="@android:style/Theme.Holo.Light"/>
 </menu>
