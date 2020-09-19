@@ -22,21 +22,20 @@
             app:layout_constraintStart_toStartOf="parent"
             android:gravity="center"
             android:padding="10dp"
-            android:textColor="#ffffff"
-            android:text="Live"
+            android:textColor="@color/white"
+            android:text="@string/live"
             android:textSize="@dimen/live_txt_size"
             android:background="@drawable/bg_left_rounded"
             android:backgroundTintMode="src_over"
-            android:backgroundTint="#EBFF5722"/>
+            android:backgroundTint="@color/live"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/title"
             app:layout_constraintStart_toEndOf="@id/live"
-            android:text="EU Champion final is now being played: Real Madrid vs Bayern Munich"
             android:layout_marginStart="5dp"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:textSize="12sp"
             android:gravity="center|start"
             android:ellipsize="end"
