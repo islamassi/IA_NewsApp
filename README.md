@@ -47,7 +47,7 @@ The user will be able to see the loaded articles offline.
 * The app targets Android API 30 with minSDK 23 and using androidX
 
 ### APK 
-Please find the **IA_News.apk** in the apk folder. Screenshots available below.
+<a href="https://github.com/islamassi/IA_NewsApp/raw/master/apk/IA_News.apk">**IA_News.apk**</a>
 
 ### Demo Video 
 <a href="https://drive.google.com/file/d/1poveEf-fp0C2P9gqjA1s9UOPhoQb17V1/view?usp=sharing">Click here</a>
