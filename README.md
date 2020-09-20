@@ -1,7 +1,7 @@
 # Latest News App
 
  <p align="center"> 
- ![alt-text](https://www.dropbox.com/s/2h6gvn6ato3i8cd/IA_news.gif?dl=0 | width=350)
+ ![alt-text](https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif | width=350)
  </p>
  
 This app shows a list of top headlines news from NewsApi. 
