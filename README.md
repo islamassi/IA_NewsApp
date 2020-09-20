@@ -1,7 +1,7 @@
 # Latest News App
 
 <p align="center">
-  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_drag.gif?raw=true" width="350" >
+  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_drag.gif?raw=true" width="350" height="500" >
  </p>
 
 
