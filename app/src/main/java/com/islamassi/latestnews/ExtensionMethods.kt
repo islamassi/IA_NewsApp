@@ -1,13 +1,18 @@
 package com.islamassi.latestnews
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Transformation
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.logging.Handler
 
 /**
  * extension method for loading and downloading an image and showing it to an ImageView

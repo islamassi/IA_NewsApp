@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.MainActivity">
+
+    <item
+            android:id="@+id/read_options"
+            android:orderInCategory="1"
+            android:title="@string/read_options"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_eye"
+            android:theme="@android:style/Theme.Holo.Light"/>
+    <item
+        android:id="@+id/live"
+        android:orderInCategory="2"
+        android:title="@string/read_options"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_live_tv"
+        android:theme="@android:style/Theme.Holo.Light"/>
+</menu>

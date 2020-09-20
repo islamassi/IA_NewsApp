@@ -3,6 +3,7 @@ package com.islamassi.latestnews.dagger.component
 import com.islamassi.latestnews.dagger.module.NetModule
 import com.islamassi.latestnews.dagger.module.RoomModule
 import com.islamassi.latestnews.dagger.module.ViewModelModule
+import com.islamassi.latestnews.ui.ArticleDetailsFragment
 import com.islamassi.latestnews.ui.ArticlesFragment
 import com.islamassi.latestnews.ui.MainActivity
 import dagger.Component
@@ -23,4 +24,9 @@ interface AppComponent {
      * injects properties for ArticlesFragment
      */
     fun inject(fragment: ArticlesFragment)
+
+    /**
+     * injects properties for ArticlesDetailsFragment
+     */
+    fun inject(fragment: ArticleDetailsFragment)
 }

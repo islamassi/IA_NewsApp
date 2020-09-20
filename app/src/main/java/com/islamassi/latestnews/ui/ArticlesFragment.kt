@@ -1,29 +1,33 @@
 package com.islamassi.latestnews.ui
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.Fragment
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.room.util.StringUtil
+import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
-import com.islamassi.latestnews.viewmodel.ArticlesViewModel
+import com.islamassi.latestnews.ArticleListener
 import com.islamassi.latestnews.R
 import com.islamassi.latestnews.adapter.ArticlesAdapter
 import com.islamassi.latestnews.api.Resource
 import com.islamassi.latestnews.dagger.component.DaggerAppComponent
 import com.islamassi.latestnews.databinding.ArticlesFragmentBinding
 import com.islamassi.latestnews.model.Article
+import com.islamassi.latestnews.viewmodel.ArticlesViewModel
 import com.islamassi.latestnews.viewmodel.ViewModelFactory
 import javax.inject.Inject
+
 
 /**
  *  fragment for showing latest articles and searching for articles
  *
  */
-class ArticlesFragment : Fragment() {
+class ArticlesFragment : Fragment(), ArticleListener {
 
     // used for creating ViewModel object
     @Inject
@@ -46,17 +50,25 @@ class ArticlesFragment : Fragment() {
         DaggerAppComponent.create().inject(this) // inject
         binding = DataBindingUtil.inflate(inflater, R.layout.articles_fragment, container, false)
         binding.lifecycleOwner = this
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         setHasOptionsMenu(true)
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         // get ViewModel object
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ArticlesViewModel::class.java)
-        articlesAdapter = ArticlesAdapter(mutableListOf())
+        viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(ArticlesViewModel::class.java)
+        articlesAdapter = ArticlesAdapter(mutableListOf(), this)
         binding.articlesRecyclerView.adapter = articlesAdapter
 
+        binding.articlesRecyclerView.setOnScrollChangeListener(object : View.OnScrollChangeListener{
+            override fun onScrollChange(
+                v: View?,
+                scrollX: Int,
+                scrollY: Int,
+                oldScrollX: Int,
+                oldScrollY: Int
+            ) {
+                articlesAdapter.shouldAnimate = true
+            }
+        })
         articlesObserver = Observer {
             if (it is Resource.Success ){
                 // articles resource successfully loaded from (database or network)
@@ -84,6 +96,8 @@ class ArticlesFragment : Fragment() {
             refresh()
             resetSearchView()
         }
+
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -158,5 +172,22 @@ class ArticlesFragment : Fragment() {
             binding.emptyState.visibility = View.GONE
             articlesAdapter.notifyChange(list)
         }
+    }
+
+    override fun articleClicked(article: Article, image: ImageView, title:View, descrip: View, dateView:View) {
+        viewModel.selectedArticle.value = article
+        val detailsFragment
+                = ArticleDetailsFragment.newInstance()
+
+        fragmentManager
+            ?.beginTransaction()
+            ?.addSharedElement(image, image.transitionName)
+            ?.addSharedElement(title, title.transitionName)
+            ?.addSharedElement(descrip, descrip.transitionName)
+            ?.addSharedElement(dateView, dateView.transitionName)
+            ?.addToBackStack(null)
+            ?.replace(R.id.container, detailsFragment, ArticleDetailsFragment::javaClass.name)
+            ?.commit()
+
     }
 }
