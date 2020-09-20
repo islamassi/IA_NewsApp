@@ -11,11 +11,6 @@ This app shows a list of top headlines news from NewsApi.
     + [Architecture](#architecture)
     + [Build/Run the app](#build-run-the-app)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-
 <p align="center">
   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/scroll.gif?raw=true" width="350" >
  </p>
