@@ -3,12 +3,12 @@
 This app shows a list of top headlines news from NewsApi. 
 
 - [Latest News App](#latest-news-app)
-    + [Main features:](#main-features-)
+    + [Main features](#main-features)
     + [APK](#apk)
-    + [SDKs used:](#sdks-used-)
-    + [API info (NewsApi):](#api-info--newsapi--)
+    + [SDKs used (Not for animation, transitions, and custom UI)](#sdks-used)
+    + [API info (NewsApi)](#api-info--newsapi-)
     + [Architecture](#architecture)
-    + [Build/Run the app:](#build-run-the-app-)
+    + [Build/Run the app](#build-run-the-app)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -32,7 +32,7 @@ This app shows a list of top headlines news from NewsApi.
   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/collapse2.gif?raw=true" width="350" >
  </p>
  
-### Main features:
+### Main features
 * Showing a list of news articles
 * A title, image, short description, and relative publish date is being displayed for every article.
 * Article Details screen shows more details about an article.
@@ -51,7 +51,7 @@ The user will be able to see the loaded articles offline.
 ### APK 
 Please find the **IA_News.apk** in the apk folder. Screenshots available below.
 
-### SDKs used:
+### SDKs used
 - LiveData
 - ViewModel
 - Databinding
@@ -62,7 +62,7 @@ Please find the **IA_News.apk** in the apk folder. Screenshots available below.
 - Picasso 
 - Mockito
 
-### API info (NewsApi):
+### API info (NewsApi)
 GET "https://newsapi.org/v2/top-headlines"
 
 @Query apiKey "ADD_YOUR_API_KEY"
@@ -86,7 +86,7 @@ This class can provide a resource backed by both the database and the network.
 ![alt text](https://developer.android.com/topic/libraries/architecture/images/network-bound-resource.png)
 
 
-### Build/Run the app:
+### Build/Run the app
 For successfully running the app, you need to add an API key for the NewsAPi on the Constants.kt file.
 
 <p align="center">
