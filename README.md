@@ -1,6 +1,6 @@
 # Latest News App
 
-![Alt Text](https://s1.gifyu.com/images/collapse.md.gif)
+![Alt Text](https://gifyu.com/image/48FZ)
 
 
 This app shows a list of top headlines news from NewsApi. 
