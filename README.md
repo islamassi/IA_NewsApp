@@ -1,6 +1,6 @@
 # Latest News App
 
-![Alt Text](https://gifyu.com/image/48FZ)
+![Alt Text](https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_drag.gif)
 
 
 This app shows a list of top headlines news from NewsApi. 
