@@ -1,31 +1,37 @@
 # Latest News App
 
+This app shows a list of top headlines news from NewsApi. 
+
+- [Latest News App](#latest-news-app)
+    + [Main features:](#main-features-)
+    + [APK](#apk)
+    + [SDKs used:](#sdks-used-)
+    + [API info (NewsApi):](#api-info--newsapi--)
+    + [Architecture](#architecture)
+    + [Build/Run the app:](#build-run-the-app-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 <p align="center">
   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/scroll.gif?raw=true" width="350" >
  </p>
 
 <p align="center">
+   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_drag.gif?raw=true" width="350" >
+   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/read_options.gif?raw=true" width="350" >
+ </p>
  
+ <p align="center">
+  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_view.gif?raw=true" width="350" >
   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/transition.gif?raw=true" width="350" >
+ </p>
  
+ <p align="center">
+  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/search.gif?raw=true" width="350" >
   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/collapse2.gif?raw=true" width="350" >
  </p>
  
- <p align="center">
-  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/read_options.gif?raw=true" width="350" >
- 
-  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_view.gif?raw=true" width="350" >
- </p>
- 
- <p align="center">
-   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_drag.gif?raw=true" width="350" >
-  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/search.gif?raw=true" width="350" >
- </p>
-
-
-
-This app shows a list of top headlines news from NewsApi. 
-
 ### Main features:
 * Showing a list of news articles
 * A title, image, short description, and relative publish date is being displayed for every article.
@@ -42,13 +48,8 @@ The user will be able to see the loaded articles offline.
 * When the user rotate the screen, the user will see the same data at the same scroll position.
 * The app targets Android API 30 with minSDK 23 and using androidX
 
-### API info (NewsApi):
-GET "https://newsapi.org/v2/top-headlines"
-
-@Query apiKey "ADD_YOUR_API_KEY"
-
-@Query country "us"
-
+### APK 
+Please find the **IA_News.apk** in the apk folder. Screenshots available below.
 
 ### SDKs used:
 - LiveData
@@ -61,9 +62,13 @@ GET "https://newsapi.org/v2/top-headlines"
 - Picasso 
 - Mockito
 
+### API info (NewsApi):
+GET "https://newsapi.org/v2/top-headlines"
 
-### APK 
-Please find the **LatestNews.apk** in the apk folder. Screenshots available below.
+@Query apiKey "ADD_YOUR_API_KEY"
+
+@Query country "us"
+
 
 ### Architecture 
  The app was built with a clean MVVM architecture following Android Architecture components and Android Jetpack.
@@ -84,24 +89,6 @@ This class can provide a resource backed by both the database and the network.
 ### Build/Run the app:
 For successfully running the app, you need to add an API key for the NewsAPi on the Constants.kt file.
 
-## Screenshots
-
 <p align="center">
   <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/1.jpg?raw=true" width="500" >
- 
-  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/3.jpg?raw=true" width="500" >
- 
-  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/5.jpg?raw=true" width="500" >
- 
-  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/2.jpg?raw=true" width="500" >
- 
-  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/7.jpg?raw=true" width="750" >
-</p>
-
-
-### To improve in future
-- A delay before sending a search request for around 300 ms
-- More test cases
-
-### Feedback
-Your Feedback is highly appreciated.
+ </p>
