@@ -51,6 +51,9 @@ The user will be able to see the loaded articles offline.
 ### APK 
 Please find the **IA_News.apk** in the apk folder. Screenshots available below.
 
+### Demo Video 
+<a href="https://drive.google.com/file/d/1poveEf-fp0C2P9gqjA1s9UOPhoQb17V1/view?usp=sharing">Click here</a>
+
 ### SDKs used
 - LiveData
 - ViewModel
