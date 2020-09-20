@@ -4,6 +4,22 @@
   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_drag.gif?raw=true" width="350" height="500" >
  </p>
 
+<p align="center">
+  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/scroll.gif?raw=true" width="300" >
+ 
+  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/transition.gif?raw=true" width="300" >
+ 
+  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/collapse.gif?raw=true" width="300" >
+ 
+  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/read_options.gif?raw=true" width="300" >
+ 
+  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_view.gif?raw=true" width="300" >
+  
+   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/live_drag.gif?raw=true" width="300" >
+
+  <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/search.gif?raw=true" width="300" >
+
+</p>
 
 This app shows a list of top headlines news from NewsApi. 
 
