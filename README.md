@@ -5,13 +5,11 @@ This app shows a list of top headlines news from NewsApi.
 - [Latest News App](#latest-news-app)
     + [Main features](#main-features)
     + [APK](#apk)
-    + [SDKs used (Not for animation, transitions, and custom UI)](#sdks-used)
+    + [Demo Video](#demo-video)
+    + [SDKs used(Not for animation, transitions, and custom UI)](#sdks-used)
     + [API info (NewsApi)](#api-info--newsapi-)
     + [Architecture](#architecture)
     + [Build/Run the app](#build-run-the-app)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 
 <p align="center">
   <img src="https://github.com/islamassi/IA_NewsApp/blob/feature/articleDetails/screenshots/scroll.gif?raw=true" width="350" >
@@ -50,6 +48,9 @@ The user will be able to see the loaded articles offline.
 
 ### APK 
 Please find the **IA_News.apk** in the apk folder. Screenshots available below.
+
+### Demo Video 
+<a href="https://drive.google.com/file/d/1poveEf-fp0C2P9gqjA1s9UOPhoQb17V1/view?usp=sharing">Click here</a>
 
 ### SDKs used
 - LiveData
