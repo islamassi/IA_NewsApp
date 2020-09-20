@@ -1,22 +1,26 @@
 # Latest News App
 
-<p align="center">
-  <img src="https://github.com/islamassi/NewsApi/blob/master/screenshots/1.jpg?raw=true" width="350" >
+ <p align="center"> 
+ ![alt-text](link |https://github.com/islamassi/NewsApi/blob/master/screenshots/IA_news.gif width=350)
  </p>
  
-This app shows a list of top headlines news from NewsApi. The following are the main app features:
+This app shows a list of top headlines news from NewsApi. 
+
+### Main features:
 * Showing a list of news articles
 * A title, image, short description, and relative publish date is being displayed for every article.
+* Article Details screen shows more details about an article.
+* Draggable live streaming view (Just design without implementation)
+* Read options view (Just design without functionality)
+* Smooth animations and transitions
 * The user have the ability to **search** for a specific article using the search view.
 * **Room database** was used to save the loaded articles locally so they will be available offline.
-* When a user clicks on an article, article URL will be opened showing all article details in an in-app tab.
-This will let the user benefit from the browser features and experience including showing videos and rich details.
-In the other hand, the user is still inside the app.
+* Open article url in an in-app browser
 * Local articles saved in the database will be loaded when the user opens the app. a server request will be also initiated in the same time.
 The user will be able to see the loaded articles offline.
 * The database is the single source of truth
 * When the user rotate the screen, the user will see the same data at the same scroll position.
-* The app targets Android API 29 with minSDK 21 and using androidX
+* The app targets Android API 30 with minSDK 23 and using androidX
 
 ### API info (NewsApi):
 GET "https://newsapi.org/v2/top-headlines"
