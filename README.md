@@ -5,10 +5,13 @@ This app shows a list of top headlines news from NewsApi.
 - [Latest News App](#latest-news-app)
     + [Main features](#main-features)
     + [APK](#apk)
-    + [SDKs used (Not for animation, transitions, and custom UI)](#sdks-used)
+    + [Demo Video](#demo-video)
+    + [SDKs used(Not for animation, transitions, and custom UI)](#sdks-used)
     + [API info (NewsApi)](#api-info--newsapi-)
     + [Architecture](#architecture)
     + [Build/Run the app](#build-run-the-app)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
