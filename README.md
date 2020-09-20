@@ -1,7 +1,7 @@
 # Latest News App
 
  <p align="center"> 
- ![alt-text](link |https://github.com/islamassi/NewsApi/blob/master/screenshots/IA_news.gif width=350)
+ ![alt-text](https://www.dropbox.com/s/2h6gvn6ato3i8cd/IA_news.gif?dl=0 | width=350)
  </p>
  
 This app shows a list of top headlines news from NewsApi. 
