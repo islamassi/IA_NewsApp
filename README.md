@@ -1,8 +1,8 @@
-# Latest News App
+# I.A News App
 
 This app shows a list of top headlines news from NewsApi. 
 
-- [Latest News App](#latest-news-app)
+- [I.A News App](#i.a-news-app)
     + [Main features](#main-features)
     + [APK](#apk)
     + [Demo Video](#demo-video)
